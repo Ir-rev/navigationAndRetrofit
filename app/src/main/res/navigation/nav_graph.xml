@@ -21,5 +21,8 @@
         android:name="ir.rev.navigationandretrofit.ui.secondFragment.SecondFragment"
         android:label="Второй"
         tools:layout="@layout/fragment_second">
+        <argument
+            android:name="classForTest"
+            app:argType="ir.rev.navigationandretrofit.ui.ClassForTest"/>
     </fragment>
 </navigation>

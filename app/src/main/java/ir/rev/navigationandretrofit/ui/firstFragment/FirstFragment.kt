@@ -1,21 +1,19 @@
 package ir.rev.navigationandretrofit.ui.firstFragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.rev.navigationandretrofit.R
-import ir.rev.navigationandretrofit.ui.secondFragment.SecondViewModel
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import ir.rev.navigationandretrofit.databinding.FragmentFirstBinding
+import ir.rev.navigationandretrofit.ui.ClassForTest
 
 class FirstFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FirstFragment()
-    }
-
     private lateinit var viewModel: FirstViewModel
+    private lateinit var binding: FragmentFirstBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +24,21 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        binding = FragmentFirstBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // при нажатии на кнопку откроется второй экран в который будут переданы аргументы
+        binding.buttonNavigation.setOnClickListener {
+            findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                ClassForTest(
+                    binding.textInput.text.toString()
+                )
+            ))
+        }
     }
 
 }
