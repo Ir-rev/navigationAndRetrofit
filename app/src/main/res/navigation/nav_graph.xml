@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+<!-- Навигация   -->
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="ir.rev.navigationandretrofit.ui.firstFragment.FirstFragment"
+        android:label="Первый"
+        tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="ir.rev.navigationandretrofit.ui.secondFragment.SecondFragment"
+        android:label="Второй"
+        tools:layout="@layout/fragment_second">
+    </fragment>
+</navigation>
